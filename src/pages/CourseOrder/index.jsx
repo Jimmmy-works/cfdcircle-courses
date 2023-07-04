@@ -192,7 +192,7 @@ export default function CourseOrder() {
         setPaymentMethod(orderedCourse.paymentMethod);
     }
   }, [profileInfo, typeOptions, orderedCourse, setPaymentMethod]);
-  const isPageLoading = useDebounce(courseDetailLoading, 1500);
+  const isPageLoading = useDebounce(courseDetailLoading, 300);
   if (isPageLoading) {
     return (
       <main className="mainwrapper --ptop">

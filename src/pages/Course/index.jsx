@@ -12,22 +12,21 @@ import SkeletonLoading from "../../components/SkeletonLoading";
 import Loading from "../../components/Loading";
 
 export default function Course() {
-  const { data, error, loading, refetch } = useQuery((query) =>
-    courseService.getCoures(query)
+  const { data, error, loading, refetch } = useQuery(() =>
+    courseService.getCoures()
   );
-
   const dataCourses = data?.courses || [];
   // Serach + reFetch Data
-  const [searchTerm, setSearchTerm] = useState(undefined);
-  const debouncedSearchTerm = useDebounce(searchTerm, 1000);
+  const [searchTerm, setSearchTerm] = useState();
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
   useEffect(() => {
     if (typeof debouncedSearchTerm === "string") {
       refetch(debouncedSearchTerm ? `?search=${debouncedSearchTerm}` : "");
     }
   }, [debouncedSearchTerm]);
-  // const isLoadingg = useDebounce(courseLoading, 2000);
 
-  // if (isLoadingg) return <Loading />;
+  const isLoading = useDebounce(loading, 1000);
+  if (isLoading) return <Loading />;
 
   return (
     <main className="mainwrapper courses --ptop">

@@ -9,10 +9,11 @@ import Head from "./Head";
 import Hero from "./Hero";
 import Content from "./Content";
 import Featured from "./Featured";
-import Faq from "./Faq";
+import Faq from "./CourseDetailFAQs";
 import CourseList from "../../components/CourseList";
 import Loading from "../../components/Loading";
 import useDebounce from "../../hooks/useDebounce";
+import CourseDetailFAQs from "./CourseDetailFAQs";
 
 export default function CourseDetail() {
   const { slug } = useParams();
@@ -39,8 +40,10 @@ export default function CourseDetail() {
     teacher?.tags?.includes(Roles.Teacher)
   );
   const allLoading = coursesLoading || loadingQuestions;
-  const isLoading = useDebounce(allLoading, 200);
+  const isLoading = useDebounce(allLoading, 300);
   if (isLoading) return <Loading />;
+  console.log("courseDetail", courseDetail);
+  console.log("courses", courses);
   return (
     <>
       <Head slug={slug} teacherInfo={teacherInfo} courseDetail={courseDetail} />
@@ -56,7 +59,8 @@ export default function CourseDetail() {
           courseDetail={courseDetail}
         />
         <Featured />
-        <Faq questions={questions} />
+
+        <CourseDetailFAQs questions={questions?.questions} />
         <CourseList
           title={`Đề xuất khóa học`}
           renderTitle={(title) => (

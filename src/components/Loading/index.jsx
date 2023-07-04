@@ -1,6 +1,7 @@
 import { Spin } from "antd";
 import React from "react";
 import { styled } from "styled-components";
+import { useAuthen } from "../AuthenContext";
 const LoadingSpin = styled.div`
   height: 100vh;
   width: 100vw;
@@ -10,8 +11,8 @@ const LoadingSpin = styled.div`
   position: fixed;
   z-index: 10000;
   background-color: #fff;
+  opacity: 1;
 `;
-
 const Loading = () => {
   return (
     <LoadingSpin className="loading">

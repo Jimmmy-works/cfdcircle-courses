@@ -1,6 +1,8 @@
 import React from "react";
+import Accordion from "../../components/Accordion";
 
 const Content = ({ courseDetail, teacherInfo, slug }) => {
+  console.log("courseDetail"?.content, courseDetail?.content);
   return (
     <section className="contentdetail">
       <div className="content">
@@ -56,42 +58,12 @@ const Content = ({ courseDetail, teacherInfo, slug }) => {
           </div>
           <div className="contentrow ctlession">
             <h3 className="contentrow__title title --t3">Nội dung khoá học</h3>
-            <div className="accordion">
-              {courseDetail?.content?.length > 0 &&
-                courseDetail?.content?.map((contentElem, index) => {
-                  return (
-                    <div
-                      key={contentElem.id || index}
-                      className="accordion__content"
-                    >
-                      <div className="accordion__content-title">
-                        <h4>
-                          <strong>{contentElem?.title}</strong>
-                        </h4>
-                      </div>
-                      <div
-                        className="accordion__content-text --transparent"
-                        style={{ display: "none" }}
-                      >
-                        {contentElem?.description?.length > 0 &&
-                          contentElem?.description?.map((des, index) => (
-                            <div key={index} className="item --lock">
-                              <p>
-                                <i>
-                                  <img
-                                    src="https://cfdcircle.vn/img/iconlock.svg"
-                                    alt="CFD Circle"
-                                  />
-                                </i>
-                                <span>{des}</span>
-                              </p>
-                            </div>
-                          ))}
-                      </div>
-                    </div>
-                  );
-                })}
-            </div>
+            <Accordion
+              title="Thông tin chung"
+              data={courseDetail?.content}
+              renderTitle={(courseContent) => courseContent?.title}
+              renderContent={(courseContent) => courseContent?.descriptions}
+            ></Accordion>
           </div>
           <div className="contentrow ctrequest">
             <h3 className="contentrow__title title --t3">Yêu cầu cần có</h3>

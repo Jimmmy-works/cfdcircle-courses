@@ -4,6 +4,8 @@ import { message } from "antd";
 import { LOCAL_STORAGE } from "../../constant/localstorage";
 import { useNavigate } from "react-router-dom";
 import { orderService } from "../../services/orderService";
+import PrivateRoute from "../PrivateRoute";
+import { PATHS } from "../../constant/pathnames";
 const AuthenContext = createContext({});
 export function AuthenProvider({ children }) {
   const [isAuthenModalOpen, setIsAuthenModalOpen] = useState(false);
@@ -18,7 +20,8 @@ export function AuthenProvider({ children }) {
   // Header
   const [dropDown, setDropDown] = useState(false);
   const [toggleNav, setToggleNav] = useState(false);
-
+  // Loading
+  const [isLoading, setIsLoading] = useState(false);
   const handleNavbar = () => {
     if (!!toggleNav) {
       setToggleNav(!toggleNav);
@@ -158,8 +161,12 @@ export function AuthenProvider({ children }) {
         toggleNav,
         setToggleNav,
         handleNavbar,
+        // course orders
         onGetCourseHistory,
         onGetCoursePayment,
+        // laoding
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

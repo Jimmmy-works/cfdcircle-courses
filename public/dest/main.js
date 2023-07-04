@@ -30,18 +30,18 @@ $(document).ready(function () {
   }
 
   // ================= LOAD VIDEO HERO HOME ================
-  function loadVideoBG() {
-    let videoBgWrap = $(".hero__background-video"),
-      srcVideoBg = videoBgWrap.data("src");
-    setTimeout(function () {
-      videoBgWrap.html(
-        '<video preload="none" autoplay loop muted playsinline><source src="' +
-          srcVideoBg +
-          '" type="video/mp4">Your browser does not support the video tag.</video>'
-      );
-    }, 500);
-  }
-  loadVideoBG();
+  // function loadVideoBG() {
+  //   let videoBgWrap = $(".hero__background-video"),
+  //     srcVideoBg = videoBgWrap.data("src");
+  //   setTimeout(function () {
+  //     videoBgWrap.html(
+  //       '<video preload="none" autoplay loop muted playsinline><source src="' +
+  //         srcVideoBg +
+  //         '" type="video/mp4">Your browser does not support the video tag.</video>'
+  //     );
+  //   }, 500);
+  // }
+  // loadVideoBG();
 
   // ================= COURSE COMING HOME ================
 
@@ -69,84 +69,84 @@ $(document).ready(function () {
   teacherSlider();
 
   // ================= TESTIMONIALS HOME ================
-  function testimonialSlider() {
-    if ($(".testimonial__slider").length) {
-      var $carousel = $(".testimonial__slider .images .list").flickity({
-        contain: true,
-        wrapAround: false,
-        freeScroll: false,
-        cellAlign: "center",
-        lazyLoad: 2,
-        imagesLoaded: true,
-        prevNextButtons: false,
-        dragThreshold: 0,
-        on: {
-          ready: function () {
-            let dotsSlideTes = $(".testimonial__slider .flickity-page-dots");
-            let dotsNew = $(".testimonial__slider .dots");
-            dotsSlideTes.appendTo(dotsNew);
-          },
-          change: function (index) {
-            $(".testimonial__slider .ct").removeClass("active");
-            $(".testimonial__slider .ct-" + (index + 1)).addClass("active");
-          },
-        },
-      });
-      var flkty = $carousel.data("flickity");
-      var $imgs = $(".testimonial__slider .carousel-cell picture img");
+  // function testimonialSlider() {
+  //   if ($(".testimonial__slider").length) {
+  //     var $carousel = $(".testimonial__slider .images .list").flickity({
+  //       contain: true,
+  //       wrapAround: false,
+  //       freeScroll: false,
+  //       cellAlign: "center",
+  //       lazyLoad: 2,
+  //       imagesLoaded: true,
+  //       prevNextButtons: false,
+  //       dragThreshold: 0,
+  //       on: {
+  //         ready: function () {
+  //           let dotsSlideTes = $(".testimonial__slider .flickity-page-dots");
+  //           let dotsNew = $(".testimonial__slider .dots");
+  //           dotsSlideTes.appendTo(dotsNew);
+  //         },
+  //         change: function (index) {
+  //           $(".testimonial__slider .ct").removeClass("active");
+  //           $(".testimonial__slider .ct-" + (index + 1)).addClass("active");
+  //         },
+  //       },
+  //     });
+  //     var flkty = $carousel.data("flickity");
+  //     var $imgs = $(".testimonial__slider .carousel-cell picture img");
 
-      $carousel.on("scroll.flickity", function (event, progress) {
-        flkty.slides.forEach(function (slide, i) {
-          var img = $imgs[i];
-          var x = ((slide.target + flkty.x) * -1) / 2;
-          img.style.transform = "translateX( " + x + "px)";
-        });
-      });
+  //     $carousel.on("scroll.flickity", function (event, progress) {
+  //       flkty.slides.forEach(function (slide, i) {
+  //         var img = $imgs[i];
+  //         var x = ((slide.target + flkty.x) * -1) / 2;
+  //         img.style.transform = "translateX( " + x + "px)";
+  //       });
+  //     });
 
-      let ctrPrevTes = $(".testimonial .control .control__prev"),
-        ctrNextTes = $(".testimonial .control .control__next");
+  //     let ctrPrevTes = $(".testimonial .control .control__prev"),
+  //       ctrNextTes = $(".testimonial .control .control__next");
 
-      ctrPrevTes.on("click", function () {
-        $carousel.flickity("previous", true);
-      });
-      ctrNextTes.on("click", function () {
-        $carousel.flickity("next", true);
-      });
-    }
-  }
-  testimonialSlider();
+  //     ctrPrevTes.on("click", function () {
+  //       $carousel.flickity("previous", true);
+  //     });
+  //     ctrNextTes.on("click", function () {
+  //       $carousel.flickity("next", true);
+  //     });
+  //   }
+  // }
+  // testimonialSlider();
 
   // ======================TEAM HOME ===================
-  function teamSlider() {
-    let $carouselGallery = $(".gallery .list"),
-      $progressBar = $(".gallery .timeline .process");
+  // function teamSlider() {
+  //   let $carouselGallery = $(".gallery .list"),
+  //     $progressBar = $(".gallery .timeline .process");
 
-    $carouselGallery.flickity({
-      contain: true,
-      wrapAround: false,
-      freeScroll: true,
-      cellAlign: "left",
-      lazyLoad: 6,
-      imagesLoaded: true,
-      wrapAround: true,
-      prevNextButtons: false,
-    });
-    $carouselGallery.on("scroll.flickity", function (event, progress) {
-      progress = Math.max(0.05, Math.min(1, progress));
-      $progressBar.width(progress * 100 + "%");
-    });
+  //   $carouselGallery.flickity({
+  //     contain: true,
+  //     wrapAround: false,
+  //     freeScroll: true,
+  //     cellAlign: "left",
+  //     lazyLoad: 6,
+  //     imagesLoaded: true,
+  //     wrapAround: true,
+  //     prevNextButtons: false,
+  //   });
+  //   $carouselGallery.on("scroll.flickity", function (event, progress) {
+  //     progress = Math.max(0.05, Math.min(1, progress));
+  //     $progressBar.width(progress * 100 + "%");
+  //   });
 
-    let ctrPrevGallery = $(".gallery .btn_ctr.prev"),
-      ctrNextGallery = $(".gallery .btn_ctr.next");
+  //   let ctrPrevGallery = $(".gallery .btn_ctr.prev"),
+  //     ctrNextGallery = $(".gallery .btn_ctr.next");
 
-    ctrPrevGallery.on("click", function () {
-      $carouselGallery.flickity("previous");
-    });
-    ctrNextGallery.on("click", function () {
-      $carouselGallery.flickity("next");
-    });
-  }
-  teamSlider();
+  //   ctrPrevGallery.on("click", function () {
+  //     $carouselGallery.flickity("previous");
+  //   });
+  //   ctrNextGallery.on("click", function () {
+  //     $carouselGallery.flickity("next");
+  //   });
+  // }
+  // teamSlider();
 
   // ==================== MODAL =========================
 
@@ -182,24 +182,24 @@ $(document).ready(function () {
   // });
 
   // ==================== ACCORDION ==========================
-  function accordion() {
-    $(document).on(
-      "click",
-      ".accordion .accordion__content-title",
-      function () {
-        $(this).next().stop().slideToggle(200);
-        $(this).closest(".accordion__content").toggleClass("active");
-        $(this)
-          .closest(".accordion__content")
-          .siblings(".active")
-          .removeClass("active")
-          .find(".accordion__content-text")
-          .stop()
-          .slideUp(200);
-      }
-    );
-  }
-  accordion();
+  // function accordion() {
+  //   $(document).on(
+  //     "click",
+  //     ".accordion .accordion__content-title",
+  //     function () {
+  //       $(this).next().stop().slideToggle(200);
+  //       $(this).closest(".accordion__content").toggleClass("active");
+  //       $(this)
+  //         .closest(".accordion__content")
+  //         .siblings(".active")
+  //         .removeClass("active")
+  //         .find(".accordion__content-text")
+  //         .stop()
+  //         .slideUp(200);
+  //     }
+  //   );
+  // }
+  // accordion();
 
   // ===================== BACKGROUND HEADER ==================
   function setBgHeader(scrollY) {

@@ -17,7 +17,7 @@ export const useMutation = (promise, config) => {
       }
     } catch (error) {
       console.log("error", error);
-      setError(error);
+      setError(!error);
       onFail && onFail();
     } finally {
       setLoading(false);

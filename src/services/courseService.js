@@ -5,11 +5,13 @@ export const courseService = {
   getCoures(slug) {
     return axios.get(`${BASE_URL}/courses${slug ? `/${slug}` : ""}`);
   },
+  getGalleries(slug) {
+    return axios.get(`${BASE_URL}/galleries${slug ? `/${slug}` : ""}`);
+  },
   getTeams() {
     return axios.get(`${BASE_URL}/teams`);
   },
-
   getQuestions() {
-    return axios.get(`${BASE_URL}/questions?page=1&limit=6`);
+    return axios.get(`${BASE_URL}/questions`);
   },
 };

@@ -129,12 +129,14 @@ export default function Header() {
                 <Link to={PATHS.PROFILE.COURSES}>Khóa học của tôi</Link>
                 <Link to={PATHS.PROFILE.PAYMENT}>Lịch sử thanh toán</Link>
                 <Link to={PATHS.CONTACT}>Hỗ trợ</Link>
-                <Link onClick={handleLogOut} to={PATHS.HOME}>
-                  Đăng xuất
-                  <i>
-                    <img src="/img/iconlogout.svg" alt="" />
-                  </i>
-                </Link>
+                {token && (
+                  <Link onClick={handleLogOut} to={PATHS.HOME}>
+                    Đăng xuất
+                    <i>
+                      <img src="/img/iconlogout.svg" alt="" />
+                    </i>
+                  </Link>
+                )}
               </div>
             </div>
           </div>

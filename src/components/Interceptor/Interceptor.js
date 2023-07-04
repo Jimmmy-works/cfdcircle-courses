@@ -34,6 +34,8 @@ instance.interceptors.response.use(
 
         const newRefreshToken = data?.data?.data.refreshToken;
 
+        console.log(newToken, newRefreshToken);
+
         // Lưu lại token mới vào local storage
         localStorage.setItem(LOCAL_STORAGE.refreshToken, newRefreshToken);
         localStorage.setItem(LOCAL_STORAGE.token, newToken);
